@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --trust-navy: #1a365d;
+  --trust-navy-light: #2d4a73;
+  --trust-peach: #fdf0e8;
+  --trust-peach-warm: #f5e6dc;
+  --trust-accent: #c45c7a;
+  --trust-accent-light: #d4738a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-trust-peach text-trust-navy antialiased;
+}
+
+@layer components {
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-semibold text-trust-navy;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-trust-navy px-6 py-3.5 text-white font-semibold shadow-soft transition-all duration-300 hover:bg-trust-navy-light hover:shadow-soft-hover hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-trust-accent focus:ring-offset-2;
+  }
+  .btn-accent {
+    @apply inline-flex items-center gap-2 rounded-full bg-trust-accent px-6 py-3.5 text-white font-semibold shadow-soft transition-all duration-300 hover:bg-trust-accent-light hover:shadow-soft-hover hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-trust-navy focus:ring-offset-2;
+  }
+  .link-accent {
+    @apply text-trust-accent font-medium hover:text-trust-accent-light transition underline-offset-2 hover:underline;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn-primary, .btn-accent, [class*="hover:translate"], [class*="animate-"] {
+    transition: none;
+  }
+}
