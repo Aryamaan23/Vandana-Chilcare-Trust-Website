@@ -1,5 +1,5 @@
 import Hero from '@/components/Hero';
-import Stats from '@/components/Stats';
+import AnimatedStats from '@/components/AnimatedStats';
 import About from '@/components/About';
 import Principles from '@/components/Principles';
 import Initiatives from '@/components/Initiatives';
@@ -7,25 +7,34 @@ import Gallery from '@/components/Gallery';
 import News from '@/components/News';
 import Leadership from '@/components/Leadership';
 import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import Nav from '@/components/Nav';
+import FadeInSection from '@/components/FadeInSection';
 
 export default function Home() {
   return (
-    <>
-      <Nav />
-      <main>
-        <Hero />
-        <Stats />
+    <main>
+      <Hero />
+      <AnimatedStats />
+      <FadeInSection>
         <About />
+      </FadeInSection>
+      <FadeInSection>
         <Principles />
+      </FadeInSection>
+      <FadeInSection>
         <Initiatives />
+      </FadeInSection>
+      <FadeInSection>
         <Gallery />
+      </FadeInSection>
+      <FadeInSection>
         <News />
+      </FadeInSection>
+      <FadeInSection>
         <Leadership />
+      </FadeInSection>
+      <FadeInSection>
         <Contact />
-      </main>
-      <Footer />
-    </>
+      </FadeInSection>
+    </main>
   );
 }
