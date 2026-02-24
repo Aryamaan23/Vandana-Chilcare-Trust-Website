@@ -5,9 +5,73 @@ import { galleryItems, type GalleryItem } from '@/lib/gallery-data';
 
 const FALLBACK_IMAGE = '/vct-image.jpeg';
 
-function GalleryCard({ item, index }: { item: GalleryItem; index: number }) {
+function Lightbox({
+  item,
+  src,
+  onClose,
+}: {
+  item: GalleryItem;
+  src: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const onEscape = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onEscape);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onEscape);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] bg-trust-navy/95 flex flex-col md:flex-row md:items-center md:justify-center p-4 md:p-8"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image lightbox"
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition z-10"
+        aria-label="Close"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div
+        className="flex-1 flex flex-col items-center justify-center max-h-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={item.title}
+          className="max-w-full max-h-[70vh] md:max-h-[80vh] w-auto object-contain rounded-lg shadow-2xl"
+        />
+        <div className="mt-4 text-white text-center max-w-2xl">
+          <p className="text-sm text-white/80">{item.date || 'Event'}</p>
+          <h3 className="font-display text-xl font-semibold mt-1">{item.title}</h3>
+          <p className="text-sm text-white/90 mt-2 line-clamp-3">{item.caption}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GalleryCard({
+  item,
+  index,
+  onOpenLightbox,
+}: {
+  item: GalleryItem;
+  index: number;
+  onOpenLightbox: (item: GalleryItem, src: string) => void;
+}) {
   const sources = [item.imagePng, item.image, item.imageJpg].filter((s): s is string => Boolean(s));
-  // Prefer gallery image; show logo only if image fails to load
   const firstGallerySrc = sources[0];
   const [currentSrc, setCurrentSrc] = useState(firstGallerySrc || FALLBACK_IMAGE);
   const [expanded, setExpanded] = useState(false);
@@ -27,7 +91,11 @@ function GalleryCard({ item, index }: { item: GalleryItem; index: number }) {
     <article
       className="group relative bg-white rounded-2xl border border-trust-peach-warm overflow-hidden shadow-soft hover:shadow-soft-hover hover:border-trust-accent/30 transition-all duration-300"
     >
-      <div className="aspect-[4/3] relative bg-trust-peach-warm/50 overflow-hidden">
+      <button
+        type="button"
+        className="aspect-[4/3] relative bg-trust-peach-warm/50 overflow-hidden w-full block text-left focus:outline-none focus:ring-2 focus:ring-trust-accent focus:ring-offset-2 rounded-t-2xl"
+        onClick={() => onOpenLightbox(item, currentSrc)}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           key={currentSrc}
@@ -41,7 +109,8 @@ function GalleryCard({ item, index }: { item: GalleryItem; index: number }) {
           <p className="text-xs font-semibold uppercase tracking-wider text-white/90">{item.date || 'Event'}</p>
           <h3 className="font-display text-lg md:text-xl font-semibold drop-shadow-md">{item.title}</h3>
         </div>
-      </div>
+        <span className="sr-only">View full size</span>
+      </button>
       <div className="p-5 md:p-6">
         <p className="text-trust-navy/85 text-sm leading-relaxed">
           {expanded ? item.caption : shortCaption}
@@ -61,12 +130,14 @@ function GalleryCard({ item, index }: { item: GalleryItem; index: number }) {
 }
 
 export default function Gallery() {
+  const [lightbox, setLightbox] = useState<{ item: GalleryItem; src: string } | null>(null);
+
   return (
     <section id="gallery" className="py-20 md:py-28 bg-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="section-title text-center mb-4">Our Moments</h2>
         <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-4">
-          Events and memories from the field—health drives, celebrations, and moments of care.
+          Events and memories from the field—health drives, celebrations, and moments of care. Click any image to view full size.
         </p>
         <p className="text-center mb-14">
           <a
@@ -83,10 +154,22 @@ export default function Gallery() {
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {galleryItems.map((item, i) => (
-            <GalleryCard key={item.id} item={item} index={i} />
+            <GalleryCard
+              key={item.id}
+              item={item}
+              index={i}
+              onOpenLightbox={(it, src) => setLightbox({ item: it, src })}
+            />
           ))}
         </div>
       </div>
+      {lightbox && (
+        <Lightbox
+          item={lightbox.item}
+          src={lightbox.src}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </section>
   );
 }

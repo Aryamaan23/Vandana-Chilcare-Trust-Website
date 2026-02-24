@@ -2,14 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Initiatives', href: '#initiatives' },
-  { label: 'Our Moments', href: '#gallery' },
-  { label: 'News', href: '#news' },
-  { label: 'Leadership', href: '#leadership' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Initiatives', href: '/#initiatives' },
+  { label: 'Our Moments', href: '/#gallery' },
+  { label: 'Stories', href: '/stories/' },
+  { label: 'Get Involved', href: '/get-involved/' },
+  { label: 'News', href: '/#news' },
+  { label: 'Leadership', href: '/#leadership' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export default function Nav() {
@@ -30,7 +34,7 @@ export default function Nav() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <a href="#" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/vct-image.jpeg"
               alt="Vandana Child Care Trust"
@@ -41,23 +45,23 @@ export default function Nav() {
             <span className="font-display text-xl font-semibold text-trust-navy group-hover:text-trust-navy-light transition">
               Vandana Childcare Trust
             </span>
-          </a>
+          </Link>
           <div className="hidden md:flex md:items-center md:gap-1">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="px-4 py-2 text-sm font-medium text-trust-navy/85 hover:text-trust-accent rounded-lg hover:bg-trust-peach-warm/50 transition"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className="ml-4 btn-accent text-sm"
             >
               Get in Touch
-            </a>
+            </Link>
           </div>
           <button
             type="button"
@@ -78,22 +82,22 @@ export default function Nav() {
           <div className="md:hidden py-4 border-t border-trust-peach-warm/80 animate-fade-in">
             <div className="flex flex-col gap-1">
               {links.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className="px-4 py-3 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 className="mx-4 mt-2 btn-accent text-center"
                 onClick={() => setOpen(false)}
               >
                 Get in Touch
-              </a>
+              </Link>
             </div>
           </div>
         )}
