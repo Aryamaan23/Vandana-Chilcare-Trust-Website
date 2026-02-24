@@ -32,6 +32,9 @@ export default function Footer() {
             <Link href="/stories/" className="text-white/80 hover:text-trust-peach text-sm font-medium transition">
               Stories
             </Link>
+            <Link href="/programmes/" className="text-white/80 hover:text-trust-peach text-sm font-medium transition">
+              Programmes & Reports
+            </Link>
             <a
               href="https://vandanachildcaretrust.substack.com"
               target="_blank"

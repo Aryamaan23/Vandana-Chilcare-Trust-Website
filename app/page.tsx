@@ -7,19 +7,34 @@ import Gallery from '@/components/Gallery';
 import News from '@/components/News';
 import Leadership from '@/components/Leadership';
 import Contact from '@/components/Contact';
+import FadeInSection from '@/components/FadeInSection';
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <AnimatedStats />
-      <About />
-      <Principles />
-      <Initiatives />
-      <Gallery />
-      <News />
-      <Leadership />
-      <Contact />
+      <FadeInSection>
+        <About />
+      </FadeInSection>
+      <FadeInSection>
+        <Principles />
+      </FadeInSection>
+      <FadeInSection>
+        <Initiatives />
+      </FadeInSection>
+      <FadeInSection>
+        <Gallery />
+      </FadeInSection>
+      <FadeInSection>
+        <News />
+      </FadeInSection>
+      <FadeInSection>
+        <Leadership />
+      </FadeInSection>
+      <FadeInSection>
+        <Contact />
+      </FadeInSection>
     </main>
   );
 }

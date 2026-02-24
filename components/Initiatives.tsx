@@ -53,9 +53,9 @@ export default function Initiatives() {
           {initiatives.map((item, i) => (
             <div
               key={i}
-              className="group bg-trust-peach/50 rounded-2xl p-6 md:p-8 border border-trust-peach-warm hover:border-trust-accent/30 hover:shadow-soft-hover transition-all duration-300"
+              className="group bg-trust-peach/50 rounded-2xl p-6 md:p-8 border border-trust-peach-warm hover:border-trust-accent/30 hover:shadow-soft-hover hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-xl bg-trust-navy text-white flex items-center justify-center mb-4 group-hover:bg-trust-accent transition">
+              <div className="w-14 h-14 rounded-xl bg-trust-navy text-white flex items-center justify-center mb-4 group-hover:bg-trust-accent group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
               <h3 className="font-display text-xl font-semibold text-trust-navy mb-3">

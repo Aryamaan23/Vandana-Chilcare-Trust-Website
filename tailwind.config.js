@@ -4,6 +4,17 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    'bg-gradient-to-br',
+    'from-trust-accent/20',
+    'to-trust-accent/5',
+    'text-trust-accent',
+    'from-trust-navy/15',
+    'to-trust-navy/5',
+    'text-trust-navy',
+    'bg-trust-peach-warm',
+    'bg-trust-navy/10',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -24,6 +35,10 @@ module.exports = {
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
         'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+        'float': 'float 4s ease-in-out infinite',
+        'scale-in': 'scaleIn 0.5s ease-out forwards',
+        'fade-in-up-slow': 'fadeInUp 0.7s ease-out forwards',
+        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
       },
       animationDelay: {
         100: '100ms',
@@ -32,6 +47,9 @@ module.exports = {
         250: '250ms',
         350: '350ms',
         450: '450ms',
+        500: '500ms',
+        600: '600ms',
+        700: '700ms',
       },
       keyframes: {
         fadeIn: {
@@ -41,6 +59,18 @@ module.exports = {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.97)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+          '50%': { opacity: '0.9', transform: 'scale(1.05)' },
         },
       },
       boxShadow: {

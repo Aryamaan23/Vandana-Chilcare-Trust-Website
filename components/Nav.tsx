@@ -4,21 +4,35 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const links = [
+const mainLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about/' },
-  { label: 'Initiatives', href: '/#initiatives' },
-  { label: 'Our Moments', href: '/#gallery' },
-  { label: 'Stories', href: '/stories/' },
+  {
+    label: 'Our Work',
+    dropdown: [
+      { label: 'Programmes & Reports', href: '/programmes/' },
+      { label: 'Initiatives', href: '/#initiatives' },
+      { label: 'Our Moments', href: '/#gallery' },
+      { label: 'Stories', href: '/stories/' },
+    ],
+  },
   { label: 'Get Involved', href: '/get-involved/' },
-  { label: 'News', href: '/#news' },
-  { label: 'Leadership', href: '/#leadership' },
-  { label: 'Contact', href: '/#contact' },
+  {
+    label: 'More',
+    dropdown: [
+      { label: 'News', href: '/#news' },
+      { label: 'Leadership', href: '/#leadership' },
+      { label: 'Contact', href: '/#contact' },
+    ],
+  },
 ];
+
+const getInTouchClass = 'btn-accent-rect text-sm';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -26,46 +40,95 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const navLinkClass =
+    'flex items-center gap-1 px-4 py-2.5 text-sm font-medium text-trust-navy/90 hover:text-trust-accent rounded-lg transition-colors duration-200';
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/98 shadow-soft py-2' : 'bg-trust-peach/95'
-      } backdrop-blur-sm border-b border-trust-peach-warm/80`}
+        scrolled
+          ? 'bg-white/98 shadow-[0_1px_20px_rgba(26,54,93,0.06)] py-1 border-b border-trust-peach-warm/60'
+          : 'bg-gradient-to-r from-trust-peach via-white/90 to-trust-peach/95 py-2 border-b border-trust-peach-warm/70'
+      } backdrop-blur-md`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/vct-image.jpeg"
-              alt="Vandana Child Care Trust"
-              width={48}
-              height={48}
-              className="rounded-full object-cover ring-2 ring-trust-navy/10 group-hover:ring-trust-accent/30 transition"
-            />
-            <span className="font-display text-xl font-semibold text-trust-navy group-hover:text-trust-navy-light transition">
+        <div className="flex h-14 md:h-16 items-center justify-between">
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <span className="relative flex shrink-0">
+              <Image
+                src="/vct-image.jpeg"
+                alt="Vandana Child Care Trust"
+                width={44}
+                height={44}
+                className="rounded-full object-cover ring-2 ring-trust-navy/10 group-hover:ring-trust-accent/40 transition-all duration-300 group-hover:scale-105"
+              />
+            </span>
+            <span className="font-display text-lg md:text-xl font-semibold text-trust-navy group-hover:text-trust-navy-light transition hidden sm:block">
               Vandana Childcare Trust
             </span>
           </Link>
-          <div className="hidden md:flex md:items-center md:gap-1">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-4 py-2 text-sm font-medium text-trust-navy/85 hover:text-trust-accent rounded-lg hover:bg-trust-peach-warm/50 transition"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/#contact"
-              className="ml-4 btn-accent text-sm"
-            >
+
+          {/* Desktop: dropdown nav */}
+          <div className="hidden lg:flex lg:items-center lg:gap-1">
+            {mainLinks.map((item) => {
+              if ('href' in item && item.href) {
+                return (
+                  <Link key={item.href} href={item.href} className={navLinkClass}>
+                    {item.label}
+                  </Link>
+                );
+              }
+              const isOpen = openDropdown === item.label;
+              return (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => setOpenDropdown(item.label)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  <button
+                    type="button"
+                    className={navLinkClass}
+                    onClick={() => setOpenDropdown(isOpen ? null : item.label)}
+                    aria-expanded={isOpen}
+                    aria-haspopup="true"
+                  >
+                    {item.label}
+                    <svg
+                      className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div
+                    className={`absolute left-0 top-full pt-1 transition-all duration-200 ${isOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}
+                  >
+                    <div className="min-w-[200px] rounded-xl bg-white border border-trust-peach-warm shadow-soft-hover py-1">
+                      {(item.dropdown ?? []).map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className="block px-4 py-2.5 text-sm text-trust-navy/90 hover:bg-trust-peach-warm/60 hover:text-trust-accent transition"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            <Link href="/#contact" className={`ml-3 ${getInTouchClass}`}>
               Get in Touch
             </Link>
           </div>
+
           <button
             type="button"
-            className="md:hidden rounded-lg p-2.5 text-trust-navy hover:bg-trust-peach-warm/50 transition"
+            className="lg:hidden rounded-xl p-2.5 text-trust-navy hover:bg-trust-peach-warm/60 transition"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -78,22 +141,90 @@ export default function Nav() {
             </svg>
           </button>
         </div>
+
+        {/* Mobile menu */}
         {open && (
-          <div className="md:hidden py-4 border-t border-trust-peach-warm/80 animate-fade-in">
-            <div className="flex flex-col gap-1">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-4 py-3 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition"
-                  onClick={() => setOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+          <div className="lg:hidden py-4 border-t border-trust-peach-warm/80 animate-fade-in">
+            <div className="flex flex-col gap-0.5">
+              <Link
+                href="/"
+                className="px-4 py-3 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition"
+                onClick={() => setOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                href="/about/"
+                className="px-4 py-3 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition"
+                onClick={() => setOpen(false)}
+              >
+                About
+              </Link>
+              <div className="px-4 py-2 text-xs font-semibold text-trust-navy/70 uppercase tracking-wider">
+                Our Work
+              </div>
+              <Link
+                href="/programmes/"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
+                onClick={() => setOpen(false)}
+              >
+                Programmes & Reports
+              </Link>
+              <Link
+                href="/#initiatives"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
+                onClick={() => setOpen(false)}
+              >
+                Initiatives
+              </Link>
+              <Link
+                href="/#gallery"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
+                onClick={() => setOpen(false)}
+              >
+                Our Moments
+              </Link>
+              <Link
+                href="/stories/"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
+                onClick={() => setOpen(false)}
+              >
+                Stories
+              </Link>
+              <Link
+                href="/get-involved/"
+                className="px-4 py-3 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition"
+                onClick={() => setOpen(false)}
+              >
+                Get Involved
+              </Link>
+              <div className="px-4 py-2 text-xs font-semibold text-trust-navy/70 uppercase tracking-wider">
+                More
+              </div>
+              <Link
+                href="/#news"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
+                onClick={() => setOpen(false)}
+              >
+                News
+              </Link>
+              <Link
+                href="/#leadership"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
+                onClick={() => setOpen(false)}
+              >
+                Leadership
+              </Link>
               <Link
                 href="/#contact"
-                className="mx-4 mt-2 btn-accent text-center"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
+                onClick={() => setOpen(false)}
+              >
+                Contact
+              </Link>
+              <Link
+                href="/#contact"
+                className={`mx-4 mt-4 ${getInTouchClass}`}
                 onClick={() => setOpen(false)}
               >
                 Get in Touch

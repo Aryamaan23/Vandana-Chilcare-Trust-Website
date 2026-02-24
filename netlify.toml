@@ -1,3 +1,7 @@
+# Netlify config for Next.js static export
 [build]
   command = "npm run build"
   publish = "out"
+
+[build.environment]
+  NODE_VERSION = "18"

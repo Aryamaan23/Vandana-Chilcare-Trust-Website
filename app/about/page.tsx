@@ -2,10 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const timeline = [
-  { year: '2016', title: 'Foundation', desc: 'Vandana Childcare Trust was established in Prayagraj (Allahabad) to support underprivileged children and women.' },
-  { year: '2017–2019', title: 'Training Centre', desc: 'Set up the training centre on Minto Road, offering academic and vocational guidance.' },
-  { year: '2020–2022', title: 'Health & Outreach', desc: 'Expanded health awareness programmes and hospital outreach at Tej Bahadur Sapru and Belly Hospital.' },
-  { year: '2023–Present', title: 'Growth & Impact', desc: 'Talent promotion, cultural events, and stronger community partnerships across Prayagraj.' },
+  { year: '2016', title: 'Foundation', desc: 'Vandana Childcare Trust was established in Prayagraj (Allahabad) to support underprivileged children and women.', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+  { year: '2017–2019', title: 'Training Centre', desc: 'Set up the training centre on Minto Road, offering academic and vocational guidance.', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
+  { year: '2020–2022', title: 'Health & Outreach', desc: 'Expanded health awareness programmes and hospital outreach at Tej Bahadur Sapru and Belly Hospital.', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+  { year: '2023–Present', title: 'Growth & Impact', desc: 'Talent promotion, cultural events, and stronger community partnerships across Prayagraj.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
 ];
 
 export const metadata = {
@@ -42,13 +42,13 @@ export default function AboutPage() {
                 See our initiatives
               </Link>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-soft-hover border border-trust-peach-warm">
+            <div className="flex justify-center items-center bg-gradient-to-br from-trust-peach to-trust-peach-warm rounded-2xl p-8 md:p-10 border border-trust-peach-warm shadow-soft min-h-[280px] md:min-h-[320px]">
               <Image
                 src="/vct-image.jpeg"
                 alt="Vandana Childcare Trust"
-                width={600}
-                height={400}
-                className="w-full h-72 md:h-80 object-cover"
+                width={320}
+                height={320}
+                className="w-full max-w-[280px] md:max-w-[320px] h-auto object-contain rounded-2xl shadow-soft"
               />
             </div>
           </div>
@@ -89,24 +89,34 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-trust-peach/60 via-white to-trust-peach/40">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(196,92,122,0.06)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,rgba(26,54,93,0.05)_0%,transparent_50%)]" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="section-title text-center mb-4">Our Journey</h2>
-          <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-14">
+          <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-16">
             Key milestones since our foundation.
           </p>
-          <div className="relative">
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-trust-peach-warm -translate-x-1/2 md:translate-x-0" />
-            <ul className="space-y-10">
+          <div className="relative max-w-3xl mx-auto">
+            <ul className="space-y-6">
               {timeline.map((item, i) => (
-                <li key={i} className="relative flex flex-col md:flex-row gap-4 md:gap-8 md:items-center">
-                  <div className="md:w-1/2 md:text-right md:pr-12">
-                    <span className="inline-block font-display text-2xl font-bold text-trust-accent">{item.year}</span>
-                    <h3 className="font-display text-lg font-semibold text-trust-navy mt-1">{item.title}</h3>
+                <li key={i} className="relative flex gap-5 md:gap-6">
+                  <div className="flex flex-col items-center flex-shrink-0">
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white border-2 border-trust-accent/30 shadow-soft flex items-center justify-center z-10 ring-4 ring-white">
+                      <svg className="w-6 h-6 md:w-7 md:h-7 text-trust-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
+                      </svg>
+                    </div>
+                    {i < timeline.length - 1 && (
+                      <div className="w-0.5 flex-1 min-h-[24px] bg-gradient-to-b from-trust-accent/40 to-trust-accent/20 mt-2" />
+                    )}
                   </div>
-                  <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-trust-navy border-4 border-white shadow -translate-x-1/2 md:translate-x-0 mt-1.5" />
-                  <div className="md:w-1/2 pl-12 md:pl-12">
-                    <p className="text-trust-navy/85 leading-relaxed">{item.desc}</p>
+                  <div className="flex-1 pb-2">
+                    <div className="bg-white rounded-2xl border border-trust-peach-warm shadow-soft hover:shadow-soft-hover hover:border-trust-accent/20 p-6 md:p-8 transition-all duration-300">
+                      <span className="inline-block font-display text-2xl font-bold text-trust-accent mb-2">{item.year}</span>
+                      <h3 className="font-display text-xl font-semibold text-trust-navy mb-3">{item.title}</h3>
+                      <p className="text-trust-navy/85 leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
                 </li>
               ))}
