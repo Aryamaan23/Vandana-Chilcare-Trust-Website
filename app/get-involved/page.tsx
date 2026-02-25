@@ -31,10 +31,12 @@ const tabs = [
             Sponsor cultural events and talent promotion
           </li>
         </ul>
-        <p className="text-trust-navy/80 text-sm">
-          For donations, please reach out via the contact details on our{' '}
-          <Link href="/#contact" className="link-accent">Contact</Link> section. We will share bank details and provide a receipt for your records.
+        <p className="text-trust-navy/80 text-sm mb-4">
+          You can donate securely online via Razorpay (cards, UPI, net banking). We will email you a receipt for your records.
         </p>
+        <Link href="/donate/" className="btn-accent-rect inline-flex">
+          Donate now
+        </Link>
       </>
     ),
   },

@@ -17,6 +17,7 @@ const mainLinks = [
     ],
   },
   { label: 'Get Involved', href: '/get-involved/' },
+  { label: 'Donate', href: '/donate/' },
   {
     label: 'More',
     dropdown: [

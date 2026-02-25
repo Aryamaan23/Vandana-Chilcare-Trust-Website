@@ -29,6 +29,9 @@ export default function Footer() {
             <Link href="/get-involved/" className="text-white/80 hover:text-trust-peach text-sm font-medium transition">
               Get Involved
             </Link>
+            <Link href="/donate/" className="text-white/80 hover:text-trust-peach text-sm font-medium transition">
+              Donate
+            </Link>
             <Link href="/stories/" className="text-white/80 hover:text-trust-peach text-sm font-medium transition">
               Stories
             </Link>
