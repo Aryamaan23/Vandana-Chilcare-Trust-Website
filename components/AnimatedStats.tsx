@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 
 const stats = [
-  { value: 2016, suffix: '', label: 'Founded', sub: 'Years of service' },
+  { value: 2016, suffix: '', label: 'Founded', sub: 'Establishment year' },
+  { value: 10, suffix: '+', label: 'Years of service', sub: 'Serving the community' },
   { value: 4, suffix: '', label: 'Core initiatives', sub: 'Health, education, talent, culture' },
   { value: 1, suffix: '', label: 'Training centre', sub: 'Minto Road, Prayagraj' },
-  { value: 5, suffix: '+', label: 'Office bearers', sub: 'Dedicated leadership' },
+  { value: 50, suffix: '+', label: 'Team', sub: 'Dedicated members' },
 ];
 
 function useInView(threshold = 0.2) {
@@ -83,7 +84,7 @@ export default function AnimatedStats() {
   return (
     <section ref={ref} className="py-16 md:py-20 bg-trust-navy text-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           {stats.map((item, i) => (
             <StatItem
               key={i}
