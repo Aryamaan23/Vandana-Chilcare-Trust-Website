@@ -1,35 +1,22 @@
 'use client';
 
+import Image from 'next/image';
+
 const collaborations = [
   {
     name: 'Omaxe Prayagraj',
     description: 'Partnership in community outreach and welfare initiatives in Prayagraj.',
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-    iconBg: 'bg-gradient-to-br from-trust-accent/20 to-trust-accent/5 text-trust-accent',
+    logo: '/gallery/image%20copy.png',
   },
   {
     name: 'Inner Wheel Club Prayagraj',
     description: 'Collaboration on women and children welfare programmes in the region.',
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
-    iconBg: 'bg-gradient-to-br from-trust-navy/15 to-trust-navy/5 text-trust-navy',
+    logo: '/gallery/image%20copy%203.png',
   },
   {
     name: 'All India Women\'s Conference Prayagraj',
     description: 'Joint efforts for women\'s empowerment and community development in Prayagraj.',
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-    iconBg: 'bg-trust-peach-warm text-trust-navy',
+    logo: '/gallery/image%20copy%202.png',
   },
 ];
 
@@ -49,10 +36,14 @@ export default function Collaborations() {
               key={i}
               className="group relative bg-trust-peach/40 rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-soft hover:shadow-soft-hover hover:border-trust-accent/20 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div
-                className={`mb-5 w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 ${item.iconBg}`}
-              >
-                {item.icon}
+              <div className="mb-5 w-24 h-24 md:w-28 md:h-28 relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <Image
+                  src={item.logo}
+                  alt={item.name}
+                  fill
+                  className="object-contain p-1"
+                  unoptimized
+                />
               </div>
               <h3 className="font-display text-xl font-semibold text-trust-navy mb-2">
                 {item.name}

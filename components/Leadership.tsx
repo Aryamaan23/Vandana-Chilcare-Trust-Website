@@ -1,11 +1,13 @@
 'use client';
 
+import Image from 'next/image';
+
 const leadership = {
   level1: [
-    { role: 'President', name: 'Vandana Pandey' },
+    { role: 'President', name: 'Vandana Pandey', photo: '/gallery/IMG_9245.jpeg' },
   ],
   level2: [
-    { role: 'Secretary General & Co-Founder', name: 'Aryamaan Pandey' },
+    { role: 'Secretary General & Co-Founder', name: 'Aryamaan Pandey', photo: '/gallery/IMG_9145.png' },
     { role: 'Vice President', name: 'Kalpna Gupta' },
     { role: 'Treasurer', name: 'Mamta Maharani' },
   ],
@@ -21,10 +23,12 @@ function PersonCard({
   name,
   role,
   level,
+  photo,
 }: {
   name: string;
   role: string;
   level: 1 | 2 | 3;
+  photo?: string;
 }) {
   const levelStyles = {
     1: 'ring-2 ring-trust-navy/20 shadow-soft-hover bg-gradient-to-br from-trust-navy to-trust-navy-light text-white border-0',
@@ -56,9 +60,22 @@ function PersonCard({
       `}
     >
       <div
-        className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center font-display text-xl md:text-2xl font-semibold mb-3 ${initialStyles[level]}`}
+        className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center font-display text-xl md:text-2xl font-semibold mb-3 overflow-hidden flex-shrink-0 ${
+          photo ? '' : initialStyles[level]
+        }`}
       >
-        {name.split(' ').map((n) => n.charAt(0)).join('').slice(0, 2)}
+        {photo ? (
+          <Image
+            src={photo}
+            alt={name}
+            width={64}
+            height={64}
+            className="w-full h-full object-cover object-[center_12%]"
+            unoptimized
+          />
+        ) : (
+          name.split(' ').map((n) => n.charAt(0)).join('').slice(0, 2)
+        )}
       </div>
       <h3 className={`font-display text-base md:text-lg font-semibold ${nameStyles[level]}`}>
         {name}
@@ -85,6 +102,7 @@ export default function Leadership() {
             name={leadership.level1[0].name}
             role={leadership.level1[0].role}
             level={1}
+            photo={leadership.level1[0].photo}
           />
 
           {/* Tree: vertical stem then horizontal branch */}
@@ -97,7 +115,7 @@ export default function Leadership() {
           {/* Level 2: Core leadership */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {leadership.level2.map((person, i) => (
-              <PersonCard key={i} name={person.name} role={person.role} level={2} />
+              <PersonCard key={i} name={person.name} role={person.role} level={2} photo={person.photo} />
             ))}
           </div>
 

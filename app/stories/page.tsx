@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const stories = [
   {
@@ -103,9 +104,26 @@ export default function StoriesPage() {
       <section className="py-20 md:py-28 bg-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="section-title text-center mb-4">More impact</h2>
-          <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-12">
+          <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-8">
             Explore our initiatives and moments from the field.
           </p>
+          <div className="flex justify-center mb-10">
+            <Link
+              href="/#news"
+              className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-trust-navy text-white hover:bg-trust-navy-light transition shadow-soft hover:shadow-soft-hover"
+            >
+              <span className="text-sm font-medium text-white/90">As featured in</span>
+              <div className="relative w-28 h-7">
+                <Image
+                  src="/gallery/image.png"
+                  alt="Hindustan"
+                  fill
+                  className="object-contain"
+                  unoptimized
+                />
+              </div>
+            </Link>
+          </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/#initiatives" className="btn-primary">
               Our initiatives

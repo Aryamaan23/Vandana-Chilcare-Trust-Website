@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const newsItems = [
   {
     title: 'Health awareness programme at Belly Hospital',
@@ -19,19 +21,44 @@ const newsItems = [
 
 export default function News() {
   return (
-    <section id="news" className="py-20 md:py-28 bg-trust-peach">
+    <section id="news" className="py-20 md:py-28 bg-gradient-to-b from-trust-peach via-white to-trust-peach">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="section-title text-center mb-4">Recent News & Stories</h2>
-        <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-14">
+        <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-8">
           Our work in the community, as covered by the press.
         </p>
+        {/* As featured in - Hindustan logo */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-trust-navy text-white shadow-soft">
+            <span className="text-sm font-medium text-white/90 uppercase tracking-wider">As featured in</span>
+            <div className="relative w-32 h-10 flex-shrink-0">
+              <Image
+                src="/gallery/image.png"
+                alt="Hindustan"
+                fill
+                className="object-contain object-center"
+                unoptimized
+              />
+            </div>
+          </div>
+        </div>
         <div className="grid md:grid-cols-2 gap-8">
           {newsItems.map((item, i) => (
             <article
               key={i}
-              className="rounded-2xl border border-trust-peach-warm bg-white p-6 md:p-8 hover:border-trust-accent/30 hover:shadow-soft-hover transition-all duration-300"
+              className="group rounded-2xl border border-trust-peach-warm bg-white p-6 md:p-8 hover:border-trust-accent/30 hover:shadow-soft-hover transition-all duration-300 overflow-hidden relative"
             >
-              <div className="flex flex-wrap items-center gap-2 text-sm text-trust-accent font-medium mb-3">
+              <div className="absolute top-4 right-4 w-16 h-8 opacity-80 group-hover:opacity-100 transition-opacity">
+                <Image
+                  src="/gallery/image.png"
+                  alt="Hindustan"
+                  width={64}
+                  height={32}
+                  className="object-contain"
+                  unoptimized
+                />
+              </div>
+              <div className="flex flex-wrap items-center gap-2 text-sm text-trust-accent font-medium mb-3 pr-20">
                 <time dateTime={item.date}>{item.date}</time>
                 <span>·</span>
                 <span>{item.source}</span>
