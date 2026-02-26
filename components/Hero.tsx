@@ -2,10 +2,16 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-center items-center px-4 pt-28 pb-20 overflow-hidden bg-gradient-to-b from-trust-peach via-white/40 via-trust-peach-warm/50 to-trust-peach">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(26,54,93,0.06)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(196,92,122,0.04)_0%,_transparent_45%)]" />
+    <section className="relative min-h-[92vh] flex flex-col justify-center items-center px-4 pt-28 pb-20 overflow-hidden bg-gradient-to-br from-trust-peach via-white/60 via-trust-peach-warm/40 to-trust-peach">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(26,54,93,0.08)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(196,92,122,0.06)_0%,_transparent_45%)]" />
+      <div className="absolute inset-0 pattern-dots opacity-50" />
       <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-trust-navy/5 to-transparent pointer-events-none" />
+      {/* Decorative floating shapes */}
+      <div className="absolute top-24 left-[10%] w-3 h-3 rounded-full bg-trust-accent/30 animate-float [animation-delay:0ms]" aria-hidden />
+      <div className="absolute top-40 right-[15%] w-2 h-2 rounded-full bg-trust-navy/20 animate-float [animation-delay:500ms]" aria-hidden />
+      <div className="absolute bottom-40 left-[20%] w-4 h-4 rounded-full bg-trust-accent/20 animate-float [animation-delay:1000ms]" aria-hidden />
+      <div className="absolute bottom-32 right-[10%] w-2 h-2 rounded-full bg-trust-navy/25 animate-float [animation-delay:300ms]" aria-hidden />
       <div className="relative mx-auto max-w-4xl flex flex-col items-center text-center">
         <div className="mb-8 animate-fade-in opacity-0 [animation-fill-mode:forwards]">
           <Image
@@ -29,10 +35,10 @@ export default function Hero() {
           Building a brighter future since 2016—through holistic development, community outreach, and cultural harmony.
         </p>
         <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up opacity-0 [animation-delay:450ms] [animation-fill-mode:forwards]">
-          <a href="#initiatives" className="btn-primary">
+          <a href="#initiatives" className="btn-primary shadow-card hover:shadow-card-hover">
             Our Initiatives
           </a>
-          <a href="#contact" className="btn-accent-rect">
+          <a href="#contact" className="btn-accent-rect shadow-card hover:shadow-card-hover">
             Get in Touch
           </a>
         </div>

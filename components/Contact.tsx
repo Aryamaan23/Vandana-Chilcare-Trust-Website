@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { InstagramIcon, LinkedInIcon, WhatsAppIcon } from './SocialIcons';
 
 const WHATSAPP_NUMBER = '917355949951';
 
@@ -101,16 +102,21 @@ export default function Contact() {
   const canSend = name.trim() && phone.trim() && interest;
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-trust-peach">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title text-center mb-4">Contact Us</h2>
-        <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-14">
+    <section id="contact" className="relative py-20 md:py-28 bg-trust-peach overflow-hidden">
+      <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-trust-accent/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" aria-hidden />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <h2 className="section-title mb-2">Contact Us</h2>
+          <div className="section-subtitle section-subtitle-center" />
+          <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mt-4">
           Visit us, follow our updates, or send your interest—we&apos;ll get back to you.
-        </p>
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-14 items-start max-w-5xl mx-auto">
           {/* Contact form – sends to WhatsApp */}
-          <div className="bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-soft order-2 md:order-1">
+          <div className="bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-card hover:shadow-card-hover transition-all duration-300 order-2 md:order-1">
             <h3 className="font-display text-xl font-semibold text-trust-navy mb-1">Send your interest</h3>
             <p className="text-sm text-trust-navy/70 mb-6">
               Fill in your details and submit. You&apos;ll be taken to WhatsApp to send the message to us.
@@ -210,7 +216,7 @@ export default function Contact() {
 
           {/* Address & social */}
           <div className="space-y-6 order-1 md:order-2">
-            <div className="flex flex-col sm:flex-row gap-6 sm:items-start bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-soft">
+            <div className="flex flex-col sm:flex-row gap-6 sm:items-start bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-card">
               <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-trust-navy text-white flex items-center justify-center">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -226,7 +232,7 @@ export default function Contact() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 sm:items-start bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-soft">
+            <div className="flex flex-col sm:flex-row gap-6 sm:items-start bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-card">
               <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-trust-navy text-white flex items-center justify-center">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -246,24 +252,35 @@ export default function Contact() {
                   </a>
                 </p>
                 <p className="text-trust-navy/90">
-                  Instagram:{' '}
                   <a
                     href="https://instagram.com/vandana_childcare_trust"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-accent"
+                    className="link-accent inline-flex items-center gap-2"
                   >
+                    <span className="text-trust-accent"><InstagramIcon className="w-5 h-5" /></span>
                     @vandana_childcare_trust
                   </a>
                 </p>
                 <p className="text-trust-navy/90 mt-2">
-                  WhatsApp:{' '}
+                  <a
+                    href="https://www.linkedin.com/company/vandana-childcare-trust/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-accent inline-flex items-center gap-2"
+                  >
+                    <span className="text-[#0A66C2]"><LinkedInIcon className="w-5 h-5" /></span>
+                    LinkedIn
+                  </a>
+                </p>
+                <p className="text-trust-navy/90 mt-2">
                   <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-accent"
+                    className="link-accent inline-flex items-center gap-2"
                   >
+                    <span className="text-green-600"><WhatsAppIcon className="w-5 h-5" /></span>
                     +91-7355949951
                   </a>
                 </p>

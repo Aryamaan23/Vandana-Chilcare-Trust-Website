@@ -9,7 +9,7 @@ import {
 
 function ReportCard({ report }: { report: Report }) {
   return (
-    <article className="bg-white rounded-2xl border border-trust-peach-warm shadow-soft hover:shadow-soft-hover p-6 md:p-8 transition-shadow">
+    <article className="bg-white rounded-2xl border border-trust-peach-warm shadow-card hover:shadow-card-hover p-6 md:p-8 transition-all duration-300 hover:-translate-y-0.5">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
         <h3 className="font-display text-xl font-semibold text-trust-navy">{report.title}</h3>
         <span className="text-sm font-medium text-trust-accent shrink-0">{report.date}</span>
@@ -34,7 +34,7 @@ function ProgrammeCard({ programme }: { programme: Programme }) {
   const otherImages = programme.images.slice(1, 5);
 
   return (
-    <article className="bg-white rounded-2xl border border-trust-peach-warm shadow-soft overflow-hidden">
+    <article className="bg-white rounded-2xl border border-trust-peach-warm shadow-card hover:shadow-card-hover overflow-hidden transition-all duration-300 hover:-translate-y-0.5">
       <div className="grid md:grid-cols-5 gap-0">
         <div className="md:col-span-2 relative aspect-[4/3] md:aspect-auto md:min-h-[280px] bg-trust-peach-warm/50">
           {coverImage ? (
@@ -93,8 +93,9 @@ export default function ProgrammesPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-trust-navy to-trust-navy-light text-white">
+      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-br from-trust-navy via-trust-navy-light to-trust-navy text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(253,240,232,0.08)_0%,_transparent_50%)]" />
+        <div className="absolute top-24 right-16 w-48 h-48 bg-trust-accent/10 rounded-full blur-3xl" aria-hidden />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <p className="font-display text-trust-peach/90 text-lg tracking-wide uppercase mb-3">
             Documentation & impact

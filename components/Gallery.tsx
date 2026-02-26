@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { galleryItems, type GalleryItem } from '@/lib/gallery-data';
+import { InstagramIcon, LinkedInIcon } from './SocialIcons';
 
 const FALLBACK_IMAGE = '/vct-image.jpeg';
 
@@ -89,7 +90,7 @@ function GalleryCard({
 
   return (
     <article
-      className="group relative bg-white rounded-2xl border border-trust-peach-warm overflow-hidden shadow-soft hover:shadow-soft-hover hover:border-trust-accent/30 transition-all duration-300"
+      className="group relative bg-white rounded-2xl border border-trust-peach-warm overflow-hidden shadow-card hover:shadow-card-hover hover:border-trust-accent/30 hover:-translate-y-0.5 transition-all duration-300"
     >
       <button
         type="button"
@@ -133,25 +134,37 @@ export default function Gallery() {
   const [lightbox, setLightbox] = useState<{ item: GalleryItem; src: string } | null>(null);
 
   return (
-    <section id="gallery" className="py-20 md:py-28 bg-white">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title text-center mb-4">Our Moments</h2>
-        <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-4">
+    <section id="gallery" className="relative py-20 md:py-28 bg-white overflow-hidden">
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-trust-peach/40 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" aria-hidden />
+      <div className="absolute top-1/2 right-0 w-80 h-80 bg-trust-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" aria-hidden />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <h2 className="section-title mb-2">Our Moments</h2>
+          <div className="section-subtitle section-subtitle-center" />
+          <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mt-4 mb-4">
           Events and memories from the field—health drives, celebrations, and moments of care. Click any image to view full size.
-        </p>
-        <p className="text-center mb-14">
+          </p>
+          <p className="text-center mt-2 flex flex-wrap justify-center gap-x-6 gap-y-2">
           <a
             href="https://instagram.com/vandana_childcare_trust"
             target="_blank"
             rel="noopener noreferrer"
-            className="link-accent inline-flex items-center gap-1.5"
+            className="link-accent inline-flex items-center gap-2"
           >
+            <InstagramIcon className="w-5 h-5 text-trust-accent" />
             Follow us on Instagram
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
           </a>
-        </p>
+          <a
+            href="https://www.linkedin.com/company/vandana-childcare-trust/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-accent inline-flex items-center gap-2"
+          >
+            <LinkedInIcon className="w-5 h-5 text-[#0A66C2]" />
+            Follow us on LinkedIn
+          </a>
+          </p>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {galleryItems.map((item, i) => (
             <GalleryCard

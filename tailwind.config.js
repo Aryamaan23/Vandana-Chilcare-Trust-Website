@@ -5,6 +5,8 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist: [
+    'shadow-card',
+    'shadow-card-hover',
     'bg-gradient-to-br',
     'from-trust-accent/20',
     'to-trust-accent/5',
@@ -76,6 +78,9 @@ module.exports = {
       boxShadow: {
         'soft': '0 4px 20px rgba(26, 54, 93, 0.08)',
         'soft-hover': '0 12px 40px rgba(26, 54, 93, 0.12)',
+        'glow': '0 0 40px rgba(196, 92, 122, 0.15)',
+        'card': '0 4px 24px rgba(26, 54, 93, 0.06), 0 0 0 1px rgba(26, 54, 93, 0.04)',
+        'card-hover': '0 20px 50px rgba(26, 54, 93, 0.12), 0 0 0 1px rgba(196, 92, 122, 0.06)',
       },
     },
   },

@@ -46,19 +46,23 @@ const principles = [
 
 export default function Principles() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-white via-trust-peach/30 to-white border-y border-trust-peach-warm/80">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-trust-navy text-center mb-4">
-          The principles that drive us
-        </h2>
-        <p className="text-center text-trust-navy/75 max-w-2xl mx-auto mb-14">
+    <section className="relative py-20 md:py-28 bg-gradient-to-b from-white via-trust-peach/30 to-white border-y border-trust-peach-warm/80 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(196,92,122,0.03)_0%,_transparent_70%)]" aria-hidden />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-trust-navy mb-2">
+            The principles that drive us
+          </h2>
+          <div className="section-subtitle section-subtitle-center" />
+          <p className="text-center text-trust-navy/75 max-w-2xl mx-auto mt-4">
           Our values guide every programme and decision.
-        </p>
+          </p>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {principles.map((item, i) => (
             <div
               key={i}
-              className="group relative bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-soft hover:shadow-soft-hover hover:border-trust-accent/20 transition-all duration-300 flex flex-col items-center text-center"
+              className="group relative bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-card hover:shadow-card-hover hover:border-trust-accent/25 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center"
             >
               <div
                 className={`mb-5 w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 ${item.iconBg}`}

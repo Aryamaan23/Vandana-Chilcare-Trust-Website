@@ -2,11 +2,11 @@ import Image from 'next/image';
 
 const newsItems = [
   {
-    title: 'Health awareness programme at Belly Hospital',
+    title: 'Health awareness programme at Bailey Hospital',
     date: 'Jan 4, 2026',
     source: 'Live Hindustan',
     summary:
-      'Vandana Childcare Trust organised a health awareness programme at Belly Hospital. Dr. Bhavna Sharma (Chief Medical Superintendent) emphasised the importance of a healthy lifestyle, hygiene, and good habits. The trust distributed warm clothes and food to patients in the PICU and Ladies\' Ward. Vice President Kalpna Gupta, Treasurer Mamta, and other office bearers were present.',
+      'Vandana Childcare Trust organised a health awareness programme at Bailey Hospital. Dr. Bhavna Sharma (Chief Medical Superintendent) emphasised the importance of a healthy lifestyle, hygiene, and good habits. The trust distributed warm clothes and food to patients in the PICU and Ladies\' Ward. Vice President Kalpna Gupta, Treasurer Mamta, and other office bearers were present.',
     url: 'https://www.livehindustan.com/uttar-pradesh/prayagraj/story-health-awareness-program-at-belly-hospital-by-vandana-child-care-trust-201767540638701.html',
   },
   {
@@ -23,10 +23,13 @@ export default function News() {
   return (
     <section id="news" className="py-20 md:py-28 bg-gradient-to-b from-trust-peach via-white to-trust-peach">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title text-center mb-4">Recent News & Stories</h2>
-        <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-8">
+        <div className="text-center mb-12">
+          <h2 className="section-title mb-2">Recent News & Stories</h2>
+          <div className="section-subtitle section-subtitle-center" />
+          <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mt-4 mb-8">
           Our work in the community, as covered by the press.
-        </p>
+          </p>
+        </div>
         {/* As featured in - Hindustan logo */}
         <div className="flex justify-center mb-12">
           <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-trust-navy text-white shadow-soft">
@@ -46,7 +49,7 @@ export default function News() {
           {newsItems.map((item, i) => (
             <article
               key={i}
-              className="group rounded-2xl border border-trust-peach-warm bg-white p-6 md:p-8 hover:border-trust-accent/30 hover:shadow-soft-hover transition-all duration-300 overflow-hidden relative"
+              className="group relative rounded-2xl border border-trust-peach-warm bg-white p-6 md:p-8 shadow-card hover:shadow-card-hover hover:border-trust-accent/30 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
             >
               <div className="absolute top-4 right-4 w-16 h-8 opacity-80 group-hover:opacity-100 transition-opacity">
                 <Image

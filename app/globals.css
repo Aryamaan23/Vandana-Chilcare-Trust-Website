@@ -23,6 +23,27 @@ body {
   .section-title {
     @apply font-display text-3xl md:text-4xl font-semibold text-trust-navy;
   }
+  .section-subtitle {
+    @apply inline-block w-16 h-1 rounded-full bg-trust-accent/60 mt-3 mb-2;
+  }
+  .section-subtitle-center {
+    @apply flex justify-center;
+  }
+  .card-glow {
+    box-shadow: 0 4px 24px rgba(26, 54, 93, 0.06), 0 0 0 1px rgba(196, 92, 122, 0.04);
+  }
+  .card-glow:hover {
+    box-shadow: 0 16px 48px rgba(26, 54, 93, 0.1), 0 0 0 1px rgba(196, 92, 122, 0.08);
+  }
+  .pattern-dots {
+    background-image: radial-gradient(rgba(26, 54, 93, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .pattern-grid {
+    background-image: linear-gradient(rgba(26, 54, 93, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 54, 93, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
   .btn-primary {
     @apply inline-flex items-center gap-2 rounded-full bg-trust-navy px-6 py-3.5 text-white font-semibold shadow-soft transition-all duration-300 hover:bg-trust-navy-light hover:shadow-soft-hover hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-trust-accent focus:ring-offset-2;
   }

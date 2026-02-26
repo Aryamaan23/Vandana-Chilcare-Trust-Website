@@ -89,12 +89,16 @@ function PersonCard({
 
 export default function Leadership() {
   return (
-    <section id="leadership" className="py-20 md:py-28 bg-gradient-to-b from-trust-peach/50 via-white to-trust-peach/30 overflow-hidden">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title text-center mb-4">Our Leadership</h2>
-        <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mb-14">
+    <section id="leadership" className="relative py-20 md:py-28 bg-gradient-to-b from-trust-peach/50 via-white to-trust-peach/30 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(196,92,122,0.04)_0%,_transparent_60%)]" aria-hidden />
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <h2 className="section-title mb-2">Our Leadership</h2>
+          <div className="section-subtitle section-subtitle-center" />
+          <p className="text-center text-trust-navy/80 max-w-2xl mx-auto mt-4">
           A dedicated team of office bearers and advisors guiding the trust.
-        </p>
+          </p>
+        </div>
 
         <div className="flex flex-col items-center gap-0">
           {/* Level 1: President */}

@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { InstagramIcon, LinkedInIcon, WhatsAppIcon } from './SocialIcons';
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-trust-navy text-white py-14 md:py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <footer className="relative bg-trust-navy text-white py-14 md:py-16 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-trust-accent/30 to-transparent" aria-hidden />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-4">
@@ -50,9 +52,25 @@ export default function Footer() {
               href="https://instagram.com/vandana_childcare_trust"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/80 hover:text-trust-peach text-sm font-medium transition"
+              className="text-white/80 hover:text-trust-peach text-sm font-medium transition inline-flex items-center gap-1.5"
             >
-              Instagram
+              <InstagramIcon className="w-4 h-4" /> Instagram
+            </a>
+            <a
+              href="https://www.linkedin.com/company/vandana-childcare-trust/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 hover:text-trust-peach text-sm font-medium transition inline-flex items-center gap-1.5"
+            >
+              <LinkedInIcon className="w-4 h-4" /> LinkedIn
+            </a>
+            <a
+              href="https://wa.me/917355949951"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 hover:text-trust-peach text-sm font-medium transition inline-flex items-center gap-1.5"
+            >
+              <WhatsAppIcon className="w-4 h-4" /> WhatsApp
             </a>
             <Link href="/#contact" className="text-trust-peach font-medium text-sm hover:underline">
               Get in Touch

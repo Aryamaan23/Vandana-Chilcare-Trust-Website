@@ -17,7 +17,7 @@ const stories = [
   },
   {
     quote: 'The training centre gave my daughter a place to study after school. The teachers are kind and the environment is safe.',
-    author: 'Guardian, Minto Road area',
+    author: 'Guardian, Pritamnagar area',
     type: 'Education',
   },
   {
@@ -38,8 +38,9 @@ export default function StoriesPage() {
 
   return (
     <main>
-      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-trust-navy to-trust-navy-light text-white">
+      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-br from-trust-navy via-trust-navy-light to-trust-navy text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(196,92,122,0.12)_0%,_transparent_50%)]" />
+        <div className="absolute top-24 right-24 w-48 h-48 bg-trust-accent/10 rounded-full blur-3xl" aria-hidden />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <p className="font-display text-trust-peach/90 text-lg tracking-wide uppercase mb-3">Impact</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Stories & Impact</h1>

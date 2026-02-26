@@ -1,7 +1,9 @@
 export default function About() {
   return (
-    <section id="about" className="py-20 md:py-28 bg-trust-peach">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="about" className="relative py-20 md:py-28 bg-trust-peach overflow-hidden">
+      <div className="absolute inset-0 pattern-grid opacity-60" aria-hidden />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-trust-accent/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" aria-hidden />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div>
             <h2 className="section-title mb-6">About Us</h2>
@@ -10,7 +12,7 @@ export default function About() {
               Uttar Pradesh, dedicated to the welfare, education, and health of underprivileged children and women.
             </p>
             <p className="text-trust-navy/90 leading-relaxed mb-4">
-              Founded in <strong className="text-trust-navy">2016</strong>, the trust operates a training centre and conducts various community
+              Founded in <strong className="text-trust-navy">2016</strong>, the trust operates a training centre in Pritamnagar, a cultural centre on Minto Road, and conducts various community
               outreach programmes to foster social unity and cultural values.
             </p>
             <p className="text-trust-navy/90 leading-relaxed">
@@ -18,7 +20,7 @@ export default function About() {
               learning, and opportunity.
             </p>
           </div>
-          <div className="bg-white rounded-2xl p-8 md:p-10 border border-trust-peach-warm shadow-soft hover:shadow-soft-hover transition-shadow">
+          <div className="bg-white rounded-2xl p-8 md:p-10 border border-trust-peach-warm shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5">
             <h3 className="font-display text-xl font-semibold text-trust-navy mb-4">Our Vision</h3>
             <p className="text-trust-navy/90 leading-relaxed">
               A society where every child and woman can thrive—with access to health, education, and dignity.

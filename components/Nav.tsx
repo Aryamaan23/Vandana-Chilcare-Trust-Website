@@ -6,7 +6,13 @@ import Link from 'next/link';
 
 const mainLinks = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about/' },
+  {
+    label: 'About',
+    dropdown: [
+      { label: 'About Us', href: '/about/' },
+      { label: 'Founder & Co-founder Message', href: '/founder-message/' },
+    ],
+  },
   {
     label: 'Our Work',
     dropdown: [
@@ -154,12 +160,22 @@ export default function Nav() {
               >
                 Home
               </Link>
+              <div className="px-4 py-2 text-xs font-semibold text-trust-navy/70 uppercase tracking-wider">
+                About
+              </div>
               <Link
                 href="/about/"
-                className="px-4 py-3 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
                 onClick={() => setOpen(false)}
               >
-                About
+                About Us
+              </Link>
+              <Link
+                href="/founder-message/"
+                className="pl-8 pr-4 py-2.5 text-trust-navy font-medium rounded-lg hover:bg-trust-peach-warm/50 hover:text-trust-accent transition text-sm"
+                onClick={() => setOpen(false)}
+              >
+                Founder & Co-founder Message
               </Link>
               <div className="px-4 py-2 text-xs font-semibold text-trust-navy/70 uppercase tracking-wider">
                 Our Work

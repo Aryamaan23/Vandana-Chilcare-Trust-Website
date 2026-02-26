@@ -24,7 +24,7 @@ const tabs = [
           </li>
           <li className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-trust-accent" />
-            Support the training centre on Minto Road
+            Support our Training Centre (Pritamnagar) & Cultural Centre (Minto Road)
           </li>
           <li className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-trust-accent" />
@@ -85,7 +85,7 @@ const tabs = [
     content: (
       <>
         <p className="text-trust-navy/90 leading-relaxed mb-4">
-          We welcome partnerships with schools, hospitals, corporates, and other NGOs to scale our impact.
+          We welcome partnerships with schools, hospitals, corporates, UN agencies, and other NGOs to scale our impact. We are building towards institutional partnerships with transparency and measurable outcomes.
         </p>
         <ul className="space-y-2 text-trust-navy/90 mb-6">
           <li className="flex items-center gap-2">
@@ -100,11 +100,23 @@ const tabs = [
             <span className="w-2 h-2 rounded-full bg-trust-accent" />
             CSR and community outreach programmes
           </li>
+          <li className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-trust-accent" />
+            UN SDG-aligned programmes (Health, Education, Gender Equality)
+          </li>
         </ul>
-        <p className="text-trust-navy/80 text-sm">
-          For partnership enquiries, email or visit us. Details are on the{' '}
-          <Link href="/#contact" className="link-accent">Contact</Link> page.
-        </p>
+        <div className="bg-trust-peach/60 rounded-xl p-4 md:p-5 border border-trust-peach-warm mb-6">
+          <h4 className="font-display font-semibold text-trust-navy mb-2">Partnership readiness</h4>
+          <p className="text-trust-navy/85 text-sm leading-relaxed mb-3">
+            We maintain transparent governance, annual activity reports, and documented impact. We are 12A & 80G certified. Our work aligns with UN Sustainable Development Goals (SDGs) 3, 4, and 5. We are open to CSR collaborations, institutional grants, and long-term partnerships. 10+ interns have completed internships with us.
+          </p>
+          <p className="text-trust-navy/80 text-xs">
+            For partnership enquiries, reach out via our <Link href="/#contact" className="link-accent">Contact</Link> page.
+          </p>
+        </div>
+        <Link href="/#contact" className="btn-primary inline-flex">
+          Partnership enquiry
+        </Link>
       </>
     ),
   },
@@ -115,8 +127,10 @@ export default function GetInvolvedPage() {
 
   return (
     <main>
-      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-trust-accent to-trust-accent-light text-white">
+      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-br from-trust-accent via-trust-accent-light to-trust-accent text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(26,54,93,0.15)_0%,_transparent_50%)]" />
+        <div className="absolute top-20 left-20 w-40 h-40 bg-white/10 rounded-full blur-2xl" aria-hidden />
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-trust-navy/10 rounded-full blur-2xl" aria-hidden />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <p className="font-display text-white/90 text-lg tracking-wide uppercase mb-3">Support us</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Get Involved</h1>
@@ -163,7 +177,7 @@ export default function GetInvolvedPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-2xl md:text-3xl font-semibold text-trust-navy mb-4">Visit or write to us</h2>
           <p className="text-trust-navy/80 max-w-xl mx-auto mb-8">
-            1A/2B, Minto Road, Prayagraj (Allahabad), Uttar Pradesh 211001. Follow us on Instagram and Substack for updates.
+            Cultural Centre: 1A/2B, Minto Road. Training Centre: Pritamnagar. Prayagraj (Allahabad), Uttar Pradesh 211001. Follow us on Instagram and Substack for updates.
           </p>
           <Link href="/#contact" className="btn-primary">
             Contact us

@@ -169,13 +169,15 @@ export default function DonatePage() {
   return (
     <main>
       <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
-      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-trust-accent to-trust-accent-light text-white">
+      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-br from-trust-accent via-trust-accent-light to-trust-accent text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(26,54,93,0.12)_0%,_transparent_50%)]" />
+        <div className="absolute top-16 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" aria-hidden />
+        <div className="absolute bottom-16 left-10 w-40 h-40 bg-trust-navy/10 rounded-full blur-2xl" aria-hidden />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <p className="font-display text-white/90 text-lg tracking-wide uppercase mb-3">Support us</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Donate</h1>
           <p className="text-xl text-white/95 max-w-2xl">
-            Your contribution helps health camps, the training centre, and community programmes. Secure payment via Razorpay.
+            Your contribution helps health camps, the training centre, and community programmes. Secure payment via Razorpay. 12A & 80G certified—donations are eligible for tax deduction.
           </p>
         </div>
       </section>
@@ -184,8 +186,11 @@ export default function DonatePage() {
         <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl p-6 md:p-8 border border-trust-peach-warm shadow-soft">
             <h2 className="font-display text-2xl font-semibold text-trust-navy mb-2">Donation form</h2>
-            <p className="text-trust-navy/70 text-sm mb-6">
+            <p className="text-trust-navy/70 text-sm mb-4">
               Fill in your details and choose an amount. You will be redirected to Razorpay for secure payment.
+            </p>
+            <p className="text-trust-navy/80 text-sm mb-6 font-medium">
+              12A & 80G certified · Your donation is tax-deductible under the Income Tax Act.
             </p>
             {error && (
               <div className="mb-6 p-4 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-sm">

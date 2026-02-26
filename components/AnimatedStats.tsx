@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from 'react';
 
 const stats = [
-  { value: 2016, suffix: '', label: 'Founded', sub: 'Establishment year' },
-  { value: 10, suffix: '+', label: 'Years of service', sub: 'Serving the community' },
-  { value: 4, suffix: '', label: 'Core initiatives', sub: 'Health, education, talent, culture' },
-  { value: 1, suffix: '', label: 'Training centre', sub: 'Minto Road, Prayagraj' },
-  { value: 50, suffix: '+', label: 'Team', sub: 'Dedicated members' },
+  { value: 2016, suffix: '', label: 'Founded', sub: 'Establishment year', textOnly: false },
+  { value: 10, suffix: '+', label: 'Years of service', sub: 'Serving the community', textOnly: false },
+  { value: 4, suffix: '', label: 'Core initiatives', sub: 'Health, education, talent, culture', textOnly: false },
+  { value: 2, suffix: '', label: 'Centres', sub: 'Training (Pritamnagar) & Cultural (Minto Road), Prayagraj', textOnly: false },
+  { value: 50, suffix: '+', label: 'Team', sub: 'Dedicated members', textOnly: false },
+  { value: 10, suffix: '+', label: 'Interns', sub: 'Completed internships', textOnly: false },
+  { value: 0, suffix: '', label: '12A & 80G', sub: 'Certified', textOnly: true },
 ];
 
 function useInView(threshold = 0.2) {
@@ -48,27 +50,40 @@ function StatItem({
   label,
   sub,
   inView,
+  textOnly,
 }: {
   value: number;
   suffix: string;
   label: string;
   sub: string;
   inView: boolean;
+  textOnly?: boolean;
 }) {
   const [display, setDisplay] = useState(0);
   const done = useRef(false);
 
   useEffect(() => {
-    if (!inView || done.current) return;
+    if (textOnly || !inView || done.current) return;
     done.current = true;
     animateValue(value, 1500, setDisplay);
-  }, [inView, value]);
+  }, [inView, value, textOnly]);
 
   const show = inView ? display : 0;
 
+  if (textOnly) {
+    return (
+      <div className="text-center group relative">
+        <p className="font-display text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-trust-peach transition-colors duration-300">
+          {label}
+        </p>
+        <p className="text-sm text-white/70 mt-0.5">{sub}</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="text-center group">
-      <p className="font-display text-4xl md:text-5xl font-bold text-white mb-1 group-hover:text-trust-peach transition">
+    <div className="text-center group relative">
+      <p className="font-display text-4xl md:text-5xl font-bold text-white mb-1 group-hover:text-trust-peach transition-colors duration-300">
         {show}
         {suffix}
       </p>
@@ -82,9 +97,11 @@ export default function AnimatedStats() {
   const { ref, inView } = useInView(0.15);
 
   return (
-    <section ref={ref} className="py-16 md:py-20 bg-trust-navy text-white">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
+    <section ref={ref} className="relative py-20 md:py-24 bg-trust-navy text-white overflow-hidden">
+      <div className="absolute inset-0 pattern-dots opacity-30" aria-hidden />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-7 gap-8 md:gap-12">
           {stats.map((item, i) => (
             <StatItem
               key={i}
@@ -93,6 +110,7 @@ export default function AnimatedStats() {
               label={item.label}
               sub={item.sub}
               inView={inView}
+              textOnly={item.textOnly}
             />
           ))}
         </div>

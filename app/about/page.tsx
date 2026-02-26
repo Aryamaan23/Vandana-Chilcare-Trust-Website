@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 const timeline = [
   { year: '2016', title: 'Foundation', desc: 'Vandana Childcare Trust was established in Prayagraj (Allahabad) to support underprivileged children and women.', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-  { year: '2017–2019', title: 'Training Centre', desc: 'Set up the training centre on Minto Road, offering academic and vocational guidance.', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-  { year: '2020–2022', title: 'Health & Outreach', desc: 'Expanded health awareness programmes and hospital outreach at Tej Bahadur Sapru and Belly Hospital.', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+  { year: '2017–2019', title: 'Centres', desc: 'Established the Training Centre in Pritamnagar and the Cultural Centre on Minto Road, offering academic, vocational, and cultural programmes.', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
+  { year: '2020–2022', title: 'Health & Outreach', desc: 'Expanded health awareness programmes and hospital outreach at Tej Bahadur Sapru and Bailey Hospital.', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
   { year: '2023–Present', title: 'Growth & Impact', desc: 'Talent promotion, cultural events, and stronger community partnerships across Prayagraj.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
 ];
 
@@ -16,8 +16,10 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main>
-      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-trust-navy to-trust-navy-light text-white">
+      <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-br from-trust-navy via-trust-navy-light to-trust-navy text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(253,240,232,0.08)_0%,_transparent_50%)]" />
+        <div className="absolute top-20 right-0 w-64 h-64 bg-trust-accent/10 rounded-full blur-3xl" aria-hidden />
+        <div className="absolute bottom-20 left-0 w-48 h-48 bg-trust-peach/10 rounded-full blur-2xl" aria-hidden />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <p className="font-display text-trust-peach/90 text-lg tracking-wide uppercase mb-3">Who we are</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">About Vandana Childcare Trust</h1>
@@ -36,7 +38,7 @@ export default function AboutPage() {
                 <strong className="text-trust-navy">Vandana Childcare Trust</strong> was founded in 2016 in Prayagraj (Allahabad), Uttar Pradesh, with a clear focus: to support underprivileged children and women through care, education, and health initiatives.
               </p>
               <p className="text-trust-navy/90 leading-relaxed mb-4">
-                We run a training centre on Minto Road and conduct health awareness programmes, talent promotion, and cultural events—building a more inclusive and caring community.
+                We run a Training Centre in Pritamnagar and a Cultural Centre on Minto Road, and conduct health awareness programmes, talent promotion, and cultural events—building a more inclusive and caring community.
               </p>
               <Link href="/#initiatives" className="btn-primary mt-4">
                 See our initiatives
